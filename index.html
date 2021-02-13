@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON example</title>
+</head>
+<body>
+    
+    <button onclick="jsonFunc()" id="btn-json">click to change data by JSON</button>
+    
+
+    <script>
+        
+        function jsonFunc() {
+            const objAjax = new XMLHttpRequest() ; 
+            objAjax.onreadystatechange = function() {
+                console.log(this.status) ;
+                console.log(this.readyState) ;
+                if(this.status === 200 && this.readyState ===4) {
+                    // displayReq(response)
+                }
+
+            }
+            objAjax.open('GET' , 'https://jsonplaceholder.typicode.com/posts', true) ;
+            objAjax.send();
+
+        }
+
+
+
+    </script>
+</body>
+</html>
