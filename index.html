@@ -9,6 +9,8 @@
 <body>
     
     <button onclick="jsonFunc()" id="btn-json">click to change data by JSON</button>
+    <button onclick="fetchFunc()" id='btn-fetch'>click for fetch</button>
+    <ul id="list"></ul>
     
 
     <script>
@@ -19,17 +21,31 @@
                 console.log(this.status) ;
                 console.log(this.readyState) ;
                 if(this.status === 200 && this.readyState ===4) {
-                    // displayReq(response)
+                    displayReq(JSON.parse(this.responseText))
                 }
 
             }
-            objAjax.open('GET' , 'https://jsonplaceholder.typicode.com/posts', true) ;
+            objAjax.open('GET' , 'https://jsonplaceholder.typicode.com/users', true) ;
             objAjax.send();
-
         }
-
-
-
+        displayReq = (response) => {
+            console.log(response) ;
+            response.forEach((users)=>{
+                const li = `<li>${users.name}</li>`;
+                document.getElementById('list').innerHTML += li;
+            })
+        }
+        fetchFunc = () => {
+                fetch('https://jsonplaceholder.typicode.com/todos')
+                .then(response => response.json())
+                .then(json => showFetchData(json))
+        }
+        showFetchData = (response) => {
+        response.forEach((todos) => {
+          const li = `<li>${todos.title}</li>`
+          document.getElementById('list').innerHTML += li;
+        })
+        }
     </script>
 </body>
 </html>
