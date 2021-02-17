@@ -22,6 +22,16 @@
     <p id="p8"></p>
     <p id="p9"></p>
     <p id="p10"></p>
+    <p id="p11"></p>
+    <p id="p12"></p>
+    <p id="p13"></p>
+    <p id="p14"></p>
+    <p id="p15"></p>
+    <p id="p16"></p>
+    <p id="p17"></p>
+    <p id="p18"></p>
+    <p id="p19"></p>
+    <p id="p20"></p>
     
 
     <script>
@@ -72,13 +82,13 @@
 
         function sumAlert(a , b){
             const result = a + b 
-            alert (`sum alert : ${result}`)
+            // alert (`sum alert : ${result}`)
             return `sum alert : ${result}`
         }
         function sumAlertHOC(a,b){
            return function(){
                 const result = a + b 
-                alert(`sum alert with higher order function : ${result}`)
+                // alert(`sum alert with higher order function : ${result}`)
                 return `sum alert with higher order function : ${result}`
            }
         }
@@ -110,7 +120,24 @@
         document.getElementById('p6').innerHTML = op('*') 
         document.getElementById('p7').innerHTML = op('/') 
 
-        
+        function showMoney (currency) { 
+            let value ; 
+            return function(unitOfCurency) {
+                let unitOfCurencyInt = Math.floor(unitOfCurency) ; 
+                console.log(unitOfCurencyInt)
+                let unitOfCurencyFloat = ((unitOfCurency * 100) % (Math.floor(unitOfCurency)* 100 )) / 100   ;
+                console.log(unitOfCurencyFloat);
+                return `price is : ${unitOfCurencyInt + unitOfCurencyFloat} ${currency}`
+            }
+        }
+        let dollarCost = showMoney('$')
+        let euroCost = showMoney('€')
+        let poundCost = showMoney('£')
+        let persianCost = showMoney('ریال')
+        document.getElementById('p8').innerHTML = dollarCost(5.99)
+        document.getElementById('p9').innerHTML = euroCost(6.79)
+        document.getElementById('p10').innerHTML = poundCost(10.49)
+        document.getElementById('p11').innerHTML = persianCost(100.79)
     </script>
 </body>
 </html>
