@@ -69,6 +69,48 @@
         }
         const newSum = sum(5,6)
         document.getElementById('p1').innerHTML = newSum();
+
+        function sumAlert(a , b){
+            const result = a + b 
+            alert (`sum alert : ${result}`)
+            return `sum alert : ${result}`
+        }
+        function sumAlertHOC(a,b){
+           return function(){
+                const result = a + b 
+                alert(`sum alert with higher order function : ${result}`)
+                return `sum alert with higher order function : ${result}`
+           }
+        }
+        document.getElementById('p2').innerHTML = sumAlert(5,6)
+        document.getElementById('p3').innerHTML = sumAlertHOC(5,6)() ;
+        function operator(a,b) {
+            return function(op) {
+                switch(op) {
+                    case "+" : 
+                        return a + b ;
+                        break ;
+                    case "-" : 
+                        return a - b ;
+                        break ; 
+                    case "*" : 
+                        return a * b ;
+                        break ;
+                    case "/" : 
+                        return a / b ;
+                        break ; 
+                    default : 
+                        return "error"
+                }
+            }
+        }
+        let op = operator(4,6) ; 
+        document.getElementById('p4').innerHTML = op('+') 
+        document.getElementById('p5').innerHTML = op('-') 
+        document.getElementById('p6').innerHTML = op('*') 
+        document.getElementById('p7').innerHTML = op('/') 
+
+        
     </script>
 </body>
 </html>
